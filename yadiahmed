@@ -1,0 +1,28 @@
+Arduino code with flame sensor 
+
+const int sensorPin = 3;     
+const int outputPin =  5;  
+
+// variables will change:
+int readsensor = 0;   
+
+void setup() {
+  pinMode(outputPin, OUTPUT);
+  pinMode(sensorPin, INPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  readsensor = digitalRead(sensorPin);
+
+  if (readsensor == HIGH) {
+    // turn LED on:
+    digitalWrite(outputPin, HIGH);
+    Serial.println("Warning!!! Flame Detection");
+  } else {
+    // turn LED off:
+    digitalWrite(outputPin, LOW);
+    Serial.println("Flame is not Detection");
+    delay(1000);
+  }
+}
